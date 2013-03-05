@@ -3,12 +3,12 @@ var assert = require('assert'),
     fs = require('fs'),
     vows = require('vows'),
     request = require('request'),
-    httpServer = require('../lib/http-server');
+    httpServer = require('../lib/impact-dev-server');
 
 var root = path.join(__dirname, 'fixtures', 'root');
 
-vows.describe('http-server').addBatch({
-  'When http-server is listening on 8080': {
+vows.describe('impact-dev-server').addBatch({
+  'When impact-dev-server is listening on 8080': {
     topic: function () {
       var server = httpServer.createServer({
         root: root,
