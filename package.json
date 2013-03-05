@@ -59,7 +59,8 @@
     "optimist": "0.2.x",
     "union": "0.1.x",
     "ecstatic": "0.1.x",
-    "portfinder": "~0.2.1"
+    "portfinder": "~0.2.1",
+    "director": "1.1.x"
   },
   "devDependencies": {
     "vows": "0.6.x",
