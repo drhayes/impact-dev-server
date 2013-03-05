@@ -60,7 +60,10 @@
     "union": "0.1.x",
     "ecstatic": "0.1.x",
     "portfinder": "~0.2.1",
-    "director": "1.1.x"
+    "director": "1.1.x",
+    "glob": "3.1.x",
+    "q": "0.9.x",
+    "underscore": "1.4.x"
   },
   "devDependencies": {
     "vows": "0.6.x",
