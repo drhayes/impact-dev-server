@@ -1,19 +1,20 @@
 {
-  "name": "http-server",
-  "version": "0.5.3",
+  "name": "impact-dev-server",
+  "version": "0.1.0",
   "author": "Nodejitsu <support@nodejitsu.com>",
-  "description": "a simple zero-configuration command-line http server",
-  "main": "./lib/http-server",
+  "description": "a simple zero-configuration command-line http server for ImpactJS",
+  "main": "./lib/impact-dev-server",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nodeapps/http-server.git"
+    "url": "git://github.com/drhayes/impact-dev-server.git"
   },
   "keywords": [
     "cli",
-    "command"
+    "command",
+    "impactjs"
   ],
   "scripts": {
-    "start": "node ./bin/http-server",
+    "start": "node ./bin/impact-dev-server",
     "test": "vows --spec --isolate"
   },
   "contributors": [
@@ -47,6 +48,10 @@
     {
       "name": "Travis Person",
       "email": "travis.person@gmail.com"
+    },
+    {
+      "name": "David Hayes",
+      "email": "drhayes@gmail.com"
     }
   ],
   "dependencies": {
@@ -61,17 +66,17 @@
     "request": "2.9.x"
   },
   "bugs": {
-    "url": "https://github.com/nodeapps/http-server/issues"
+    "url": "https://github.com/drhayes/impact-dev-server/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/nodeapps/http-server/raw/master/LICENSE"
+      "url": "https://github.com/drhayes/impact-dev-server/raw/master/LICENSE"
     }
   ],
   "analyze": false,
   "preferGlobal": "true",
   "bin": {
-    "http-server": "./bin/http-server"
+    "impact-dev-server": "./bin/impact-dev-server"
   }
 }
