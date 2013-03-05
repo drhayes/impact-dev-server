@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 var colors = require('colors'),
-    httpServer = require('../lib/http-server'),
+    httpServer = require('../lib/impact-dev-server'),
     argv = require('optimist').argv,
     portfinder = require('portfinder')
 
 if (argv.h || argv.help) {
   console.log([
-    "usage: http-server [path] [options]",
+    "usage: impact-dev-server [path] [options]",
     "",
     "options:",
     "  -p                 Port to use [8080]",
@@ -43,7 +43,7 @@ function listen(port) {
   });
 
   server.listen(port, host, function() {
-    log('Starting up http-server, serving '.yellow
+    log('Starting up impact-dev-server, serving '.yellow
       + server.root.cyan
       + ' on port: '.yellow
       + port.toString().cyan);
@@ -56,7 +56,7 @@ if (process.platform !== 'win32') {
   // Signal handlers don't work on Windows.
   //
   process.on('SIGINT', function () {
-    log('http-server stopped.'.red);
+    log('impact-dev-server stopped.'.red);
     process.exit();
   });
 }
