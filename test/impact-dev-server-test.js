@@ -7,6 +7,9 @@ var assert = require('assert'),
 
 var root = path.join(__dirname, 'fixtures', 'root');
 
+var port = 8080;
+var testServer = 'http://127.0.0.1:' + port + '/';
+
 vows.describe('impact-dev-server').addBatch({
   'When impact-dev-server is listening on 8080': {
     topic: function () {
@@ -17,12 +20,12 @@ vows.describe('impact-dev-server').addBatch({
           'Access-Control-Allow-Credentials': 'true'
         }
       });
-      server.listen(8080);
+      server.listen(port);
       this.callback(null, server);
     },
     'it should serve files from root directory': {
       topic: function () {
-        request('http://127.0.0.1:8080/file', this.callback);
+        request(testServer + 'file', this.callback);
       },
       'status code should be 200': function (res) {
         assert.equal(res.statusCode, 200);
@@ -41,7 +44,7 @@ vows.describe('impact-dev-server').addBatch({
     },
     'when requesting non-existent file': {
       topic: function () {
-        request('http://127.0.0.1:8080/404', this.callback);
+        request(testServer + '404', this.callback);
       },
       'status code should be 404': function (res) {
         assert.equal(res.statusCode, 404);
@@ -49,7 +52,7 @@ vows.describe('impact-dev-server').addBatch({
     },
     'when requesting /': {
       topic: function () {
-        request('http://127.0.0.1:8080/', this.callback);
+        request(testServer, this.callback);
       },
       'should respond with index': function (err, res, body) {
         assert.equal(res.statusCode, 200);
@@ -59,12 +62,12 @@ vows.describe('impact-dev-server').addBatch({
     },
     'and options include custom set http-headers': {
       topic: function () {
-        request('http://127.0.0.1:8080/', this.callback);
+        request(testServer, this.callback);
       },
       'should respond with headers set in options': function (err, res, body) {
         assert.equal(res.headers['access-control-allow-origin'], '*');
         assert.equal(res.headers['access-control-allow-credentials'], 'true');
       }
-    }
+    },
   }
 }).export(module);
