@@ -1,7 +1,7 @@
 {
   "name": "impact-dev-server",
-  "version": "0.1.2",
-  "author": "Nodejitsu <support@nodejitsu.com>",
+  "version": "0.2.0",
+  "author": "David Hayes <drhayes@gmail.com>",
   "description": "a simple zero-configuration command-line http server for ImpactJS",
   "main": "./lib/impact-dev-server",
   "repository": {
@@ -14,60 +14,14 @@
     "impactjs"
   ],
   "scripts": {
-    "start": "node ./bin/impact-dev-server",
-    "test": "vows --spec --isolate"
+    "start": "node ./bin/impact-dev-server"
   },
-  "contributors": [
-    {
-      "name": "Marak Squires",
-      "email": "marak.squires@gmail.com"
-    },
-    {
-      "name": "Charlie McConnell",
-      "email": "charlie@charlieistheman.com"
-    },
-    {
-      "name": "Joshua Holbrook",
-      "email": "josh.holbrook@gmail.com"
-    },
-    {
-      "name": "Maciej Małecki",
-      "email": "maciej.malecki@notimplemented.org"
-    },
-    {
-      "name": "Matthew Bergman",
-      "email": "mzbphoto@gmail.com"
-    },
-    {
-      "name": "brad dunbar",
-      "email": "dunbarb2@gmail.com"
-    },
-    {
-      "name": "Dominic Tarr"
-    },
-    {
-      "name": "Travis Person",
-      "email": "travis.person@gmail.com"
-    },
-    {
-      "name": "David Hayes",
-      "email": "drhayes@gmail.com"
-    }
-  ],
   "dependencies": {
-    "colors": "*",
     "optimist": "0.2.x",
-    "union": "0.1.x",
-    "ecstatic": "0.1.x",
-    "portfinder": "~0.2.1",
-    "director": "1.1.x",
     "glob": "3.1.x",
     "q": "0.9.x",
-    "underscore": "1.4.x"
-  },
-  "devDependencies": {
-    "vows": "0.6.x",
-    "request": "2.9.x"
+    "lodash": "~2.3.0",
+    "connect": "~2.11.0"
   },
   "bugs": {
     "url": "https://github.com/drhayes/impact-dev-server/issues"

@@ -1,61 +1,24 @@
 #!/usr/bin/env node
 
-var colors = require('colors'),
-    httpServer = require('../lib/impact-dev-server'),
-    argv = require('optimist').argv,
-    portfinder = require('portfinder')
+var ImpactDevServer = require('../lib/impact-dev-server');
+var argv = require('optimist').argv;
 
 if (argv.h || argv.help) {
   console.log([
-    "usage: impact-dev-server [path] [options]",
+    "usage: impact-dev-server [path]",
     "",
     "options:",
-    "  -p                 Port to use [8080]",
-    "  -a                 Address to use [0.0.0.0]",
-    "  -i                 Display autoIndex [true]",
-    "  -e --ext           Default file extension if none supplied [none]",
-    "  -s --silent        Suppress log messages from output",
     "  -h --help          Print this list and exit.",
   ].join('\n'));
   process.exit();
 }
 
-var port = argv.p,
-    host = argv.a || '0.0.0.0',
-    log = (argv.s || argv.silent) ? (function () {}) : console.log;
+var dirRoot = argv._[0] || './';
 
-if (!argv.p) {
-  portfinder.basePort = 8080;
-  portfinder.getPort(function (err, port) {
-    if (err) throw err;
-    listen(port);
-  })
-} else {
-  listen(port);
-}
+console.log('Root:', dirRoot);
 
-function listen(port) {
-  var server = httpServer.createServer({
-    root: argv._[0],
-    autoIndex: argv.i,
-    ext: argv.e || argv.ext
-  });
+var server = new ImpactDevServer({
+  root: dirRoot
+});
 
-  server.listen(port, host, function() {
-    log('Starting up impact-dev-server, serving '.yellow
-      + server.root.cyan
-      + ' on port: '.yellow
-      + port.toString().cyan);
-    log('Hit CTRL-C to stop the server');
-  });
-}
-
-if (process.platform !== 'win32') {
-  //
-  // Signal handlers don't work on Windows.
-  //
-  process.on('SIGINT', function () {
-    log('impact-dev-server stopped.'.red);
-    process.exit();
-  });
-}
+console.log('Listening on localhost:8080...');
