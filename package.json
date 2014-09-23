@@ -17,11 +17,11 @@
     "start": "node ./bin/impact-dev-server"
   },
   "dependencies": {
-    "optimist": "0.2.x",
-    "glob": "3.1.x",
-    "q": "0.9.x",
-    "lodash": "~2.3.0",
-    "connect": "~2.11.0"
+    "optimist": "^0.2.8",
+    "glob": "^3.1.21",
+    "q": "^0.9.7",
+    "lodash": "^2.3.0",
+    "connect": "^2.11.2"
   },
   "bugs": {
     "url": "https://github.com/drhayes/impact-dev-server/issues"
