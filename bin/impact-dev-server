@@ -3,6 +3,7 @@
 var ImpactDevServer = require('../lib/impact-dev-server');
 var argv = require('optimist').argv;
 
+var port = 8080;
 if (argv.h || argv.help) {
   console.log([
     "usage: impact-dev-server [path]",
@@ -12,13 +13,19 @@ if (argv.h || argv.help) {
   ].join('\n'));
   process.exit();
 }
+else if (argv.p || argv.port) {
+  var p = argv.p || argv.port;
+  p = Number(p);
+  if (Number.isFinite(p)) {
+    port = p;
+  }
+}
 
 var dirRoot = argv._[0] || './';
 
-console.log('Root:', dirRoot);
-
 var server = new ImpactDevServer({
-  root: dirRoot
+  root: dirRoot,
+  port: port
 });
 
-console.log('Listening on localhost:8080...');
+console.log('Listening on localhost:' + port + '...');
