@@ -9,6 +9,7 @@ if (argv.h || argv.help) {
     "usage: impact-dev-server [path]",
     "",
     "options:",
+    "  -p --port          Set server port.",
     "  -h --help          Print this list and exit.",
   ].join('\n'));
   process.exit();
