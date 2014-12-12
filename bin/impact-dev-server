@@ -29,4 +29,6 @@ var server = new ImpactDevServer({
   port: port
 });
 
-console.log('Listening on localhost:' + port + '...');
+var url = 'localhost:' + port;
+console.log('Listening on ' + url + '...');
+console.log('Please open ' + url + '/index.html to enable live-reload');
