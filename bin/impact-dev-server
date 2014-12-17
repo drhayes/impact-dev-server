@@ -1,34 +1,40 @@
 #!/usr/bin/env node
 
 var ImpactDevServer = require('../lib/impact-dev-server');
-var argv = require('optimist').argv;
+var yargs = require('yargs');
 
-var port = 8080;
-if (argv.h || argv.help) {
-  console.log([
-    "usage: impact-dev-server [path]",
-    "",
-    "options:",
-    "  -p --port          Set server port.",
-    "  -h --help          Print this list and exit.",
-  ].join('\n'));
+var argv = yargs
+  .usage('Start a local development server for ImpactJS.')
+  .options('p', {
+    alias: 'port',
+    default: 8080,
+    describe: 'The server port.'
+  })
+  .options('r', {
+    alias: 'live-reload',
+    describe: 'Do a live reload when game files change.',
+    boolean: true
+  })
+  .help('h', 'Help!')
+  .alias('h', 'help')
+  .check(function(argv) {
+    // Check that port is a number.
+    if (!Number.isFinite(parseInt(argv.p, 10))) {
+      throw new Error('Port must be a number.');
+    }
+  })
+  .argv;
+
+if (argv.h) {
+  console.log(yargs.help());
   process.exit();
 }
-else if (argv.p || argv.port) {
-  var p = argv.p || argv.port;
-  p = Number(p);
-  if (Number.isFinite(p)) {
-    port = p;
-  }
-}
-
-var dirRoot = argv._[0] || './';
 
 var server = new ImpactDevServer({
-  root: dirRoot,
-  port: port
+  root: argv._[0] || './',
+  port: argv.p,
+  reload: argv.r
 });
 
-var url = 'localhost:' + port;
-console.log('Listening on ' + url + '...');
-console.log('Please open ' + url + '/index.html to enable live-reload');
+var url = 'http://localhost:' + argv.p;
+console.log('Listening on ' + url + '/ ...');
