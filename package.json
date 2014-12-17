@@ -1,7 +1,11 @@
 {
   "name": "impact-dev-server",
-  "version": "0.2.1",
-  "author": "David Hayes <drhayes@gmail.com>",
+  "version": "0.3.0",
+  "author": "David Hayes <drhayes@gmail.com> (http://drhayes.io)",
+  "contributors": [{
+    "name": "Sean Bohan",
+    "url": "https://github.com/pixelpicosean"
+  }],
   "description": "a simple zero-configuration command-line http server for ImpactJS",
   "main": "./lib/impact-dev-server",
   "repository": {
@@ -20,9 +24,9 @@
     "connect": "^2.11.2",
     "glob": "^3.1.21",
     "lodash": "^2.3.0",
-    "optimist": "^0.2.8",
     "puer": "^1.0.8",
-    "q": "^0.9.7"
+    "q": "^0.9.7",
+    "yargs": "^1.3.3"
   },
   "bugs": {
     "url": "https://github.com/drhayes/impact-dev-server/issues"
