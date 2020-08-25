@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var ImpactDevServer = require('../lib/impact-dev-server');
-var yargs = require('yargs');
+const ImpactDevServer = require('../lib/impact-dev-server');
+const yargs = require('yargs');
 
-var argv = yargs
+const argv = yargs
   .usage('Start a local development server for ImpactJS.')
   .options('p', {
     alias: 'port',
@@ -17,11 +17,12 @@ var argv = yargs
   })
   .help('h', 'Help!')
   .alias('h', 'help')
-  .check(function(argv) {
+  .check(argv => {
     // Check that port is a number.
-    if (!Number.isFinite(parseInt(argv.p, 10))) {
-      throw new Error('Port must be a number.');
+    if (!Number.isFinite(argv.p)) {
+      throw Error('Port must be a number.');
     }
+    return true;
   })
   .argv;
 
@@ -30,11 +31,11 @@ if (argv.h) {
   process.exit();
 }
 
-var server = new ImpactDevServer({
+const server = new ImpactDevServer({
   root: argv._[0] || './',
   port: argv.p,
   reload: argv.r
 });
 
-var url = 'http://localhost:' + argv.p;
+const url = 'http://localhost:' + argv.p;
 console.log('Listening on ' + url + '/ ...');
