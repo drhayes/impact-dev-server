@@ -2,6 +2,7 @@
 
 const ImpactDevServer = require('../lib/impact-dev-server');
 const yargs = require('yargs');
+const colors = require('colors');
 
 const argv = yargs
   .usage('Start a local development server for ImpactJS.')
@@ -38,4 +39,5 @@ const server = new ImpactDevServer({
 });
 
 const url = 'http://localhost:' + argv.p;
-console.log('Listening on ' + url + '/ ...');
+console.log('Impact Dev Server'.underline.blue);
+console.log(`Listening on ${url}/...`);
