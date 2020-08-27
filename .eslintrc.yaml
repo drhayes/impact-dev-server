@@ -1,0 +1,14 @@
+extends: airbnb
+
+rules:
+  arrow-parens: [error, as-needed]
+  brace-style: [error, stroustrup]
+  comma-dangle: off
+  function-paren-newline: [error, consistent]
+  no-multi-assign: off
+  semi-style: off
+
+# quiets React warning
+settings:
+  react:
+    version: '16'
